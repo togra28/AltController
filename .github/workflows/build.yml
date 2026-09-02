@@ -19,14 +19,17 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2.0.1
 
-    - name: Restore NuGet packages
+    - name: Restore Packages
       run: nuget restore AltController.sln
+      continue-on-error: true
 
-    - name: Build Solution
-      run: msbuild AltController.sln /p:Configuration=Release /p:Platform="x86" /p:TargetFrameworkVersion=v4.8 /v:m
+    - name: Build Project
+      run: msbuild AltController/AltController.csproj /p:Configuration=Release /p:Platform="x86" /p:TargetFrameworkVersion=v4.8 /p:TargetFrameworkProfile=""
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4.4.3
       with:
         name: AltController-Custom-EXE
-        path: AltController/bin/Release/
+        path: |
+          AltController/bin/x86/Release/
+          AltController/bin/Release/

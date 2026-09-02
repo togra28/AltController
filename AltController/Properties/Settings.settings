@@ -3,5 +3,8 @@
   <Profiles>
     <Profile Name="(Default)" />
   </Profiles>
+    <Setting Name="ShowPointerHighlight" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   <Settings />
 </SettingsFile>
